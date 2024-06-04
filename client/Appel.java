@@ -1,20 +1,19 @@
-import java.util.Scanner;
+package client;
+
+import java.rmi.Remote;
 import java.rmi.server.UnicastRemoteObject;
 
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 
-import java.rmi.RemoteException;
-import java.rmi.NotBoundException;
-
 class Appel {
     public static void main(String[] args) {
     try {
 	    Registry reg = LocateRegistry.getRegistry("100.64.80.52");
-	    ServiceDistributeur serviceDistributeur = (ServiceDistributeur) reg.lookup("tableauBlanc");
+	    ServiceDistributeur serviceDistributeur = (ServiceDistributeur) reg.lookup("rayTracing");
 
-	    TableauBlanc tableauBlanc = new TableauBlanc(serviceDistributeur);
-	    ServiceTableauBlanc client = (ServiceTableauBlanc) UnicastRemoteObject.exportObject(tableauBlanc, 0);    
+	    RayTracing rayTracing = new RayTracing(serviceDistributeur);
+	    ServiceRayTracing client = (ServiceRayTracing) UnicastRemoteObject.exportObject(rayTracing, 0);
 	    
 	    serviceDistributeur.enregistrerClient(client);
 	    }

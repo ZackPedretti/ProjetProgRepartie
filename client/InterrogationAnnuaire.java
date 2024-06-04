@@ -1,3 +1,5 @@
+package client;
+
 import java.util.Scanner;
 
 import java.rmi.registry.Registry;

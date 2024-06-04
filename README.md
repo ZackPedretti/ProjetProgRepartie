@@ -1,4 +1,6 @@
 # ProjetProgRepartie
-Le Nalinec Tibère
-Pedretti Zack
-Toussaint Jarod
+TibereLN -> Le Nalinec Tibère
+
+ZackPedretti -> Pedretti Zack
+
+Jarodlp -> Toussaint Jarod

@@ -9,7 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.server.ServerNotActiveException;
 
 class InterrogationAnnuaire {
-    public static void main(String[] args) throws RemoteException, NotBoundException, ServerNotActiveException {
+    public static void main(String[] args) throws RemoteException{
     	Registry reg = LocateRegistry.getRegistry("100.64.80.224");
 	 String[] list = reg.list();
 	 System.out.println("Liste des Service du professeur :");

@@ -11,6 +11,6 @@ public class ServiceCentral {
         ServiceDistributeur serviceCentral = (ServiceDistributeur) UnicastRemoteObject.exportObject(central, 0);    
 
         Registry reg = LocateRegistry.getRegistry(1099); /* Récupération de l'annuaire */
-        reg.rebind("tableauBlanc",serviceCentral);
+        reg.rebind("rayTracing",serviceCentral);
     }
 }

@@ -12,17 +12,11 @@ import java.rmi.server.ServerNotActiveException;
 
 class InterrogationAnnuaire {
     public static void main(String[] args) throws RemoteException{
-    	Registry reg = LocateRegistry.getRegistry("100.64.80.224");
-	 String[] list = reg.list();
-	 System.out.println("Liste des Service du professeur :");
-	 for(int i=0 ; i<list.length; i++ ) {
-	     System.out.println("* "+list[i]);
-	 }
-	 Registry regIUT = LocateRegistry.getRegistry("charlemagne.iutnc.univ-lorraine.fr", 3333);
-	 String[] listIUT = regIUT.list();
-	 System.out.println("Liste des Service IUT :");
-	 for(int i=0 ; i<listIUT.length; i++ ) {
-	     System.out.println("* "+listIUT[i]);
-	 }
+    	Registry reg = LocateRegistry.getRegistry("193.50.135.205");
+		 String[] list = reg.list();
+		 System.out.println("Liste des services :");
+		 for(int i=0 ; i<list.length; i++ ) {
+			 System.out.println("* "+list[i]);
+		 }
     }
 }

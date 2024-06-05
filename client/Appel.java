@@ -18,8 +18,8 @@ class Appel {
 	    
 	    serviceDistributeur.enregistrerClient(client);
 	    }
-	    catch (Exception e) {
-	    	e.printStackTrace();
-	    	}
+	catch (Exception e) {
+		e.printStackTrace();
+		}
     }
 }

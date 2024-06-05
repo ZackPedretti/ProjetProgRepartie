@@ -17,6 +17,7 @@ public class Central implements ServiceDistributeur {
             c.afficherMessage(dessin);
         }
     }
+
     public void distribuerMessage(Dessin d)  {
         this.dessins.add(d);
         for (ServiceTableauBlanc service : this.servicesClient)  {

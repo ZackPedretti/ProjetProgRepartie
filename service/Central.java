@@ -1,4 +1,3 @@
-package service;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

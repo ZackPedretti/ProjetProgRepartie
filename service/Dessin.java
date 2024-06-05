@@ -1,4 +1,3 @@
-package service;
 
 import java.awt.Color;
 import java.io.Serializable;

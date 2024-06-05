@@ -1,4 +1,3 @@
-package service;
 
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.RemoteException;

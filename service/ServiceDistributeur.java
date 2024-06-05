@@ -1,9 +1,15 @@
 
+import raytracer.Disp;
+import raytracer.Image;
+
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-        
+import java.util.HashMap;
 
-public interface ServiceDistributeur extends Remote {
-    public void enregistrerClient(ServiceTableauBlanc c) throws RemoteException;
-    public void distribuerMessage(Dessin d) throws RemoteException;
+
+public interface ServiceDistributeur extends Remote, Serializable {
+    void enregistrerClient(ServiceRaytracing c) throws RemoteException;
+    boolean executerRaytracing(ServiceRaytracing c) throws RemoteException;
+    Disp getFinal() throws RemoteException;
 }

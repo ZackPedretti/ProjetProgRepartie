@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Classe permettant de générer un fichier de scène pour le raytracer
  */
-public class creerFichierRayTracing {
+public class CreerFichierRaytracing {
 
     public static void main(String[] args) throws IOException {
         // on crée un fichier grâce à un BufferedWriter

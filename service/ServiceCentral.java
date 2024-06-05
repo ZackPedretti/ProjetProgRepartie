@@ -1,7 +1,5 @@
 package service;
 
-import client.ServiceDistributeur;
-
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.RemoteException;
 	
@@ -15,6 +13,6 @@ public class ServiceCentral {
         ServiceDistributeur serviceCentral = (ServiceDistributeur) UnicastRemoteObject.exportObject(central, 0);
 
         Registry reg = LocateRegistry.getRegistry(1099); /* Récupération de l'annuaire */
-        reg.rebind("rayTracing",serviceCentral);
+        reg.rebind("tableauBlanc", serviceCentral);
     }
 }

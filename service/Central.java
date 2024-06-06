@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Central implements ServiceDistributeur {
-    ServiceClient servicesClient;
+    ServiceClient serviceClient;
     ArrayList<ServiceRaytracing> serviceCalculs;
     Scene scene;
     int width, height;
@@ -34,6 +34,20 @@ public class Central implements ServiceDistributeur {
         }
     }
 
+    public void calculateImage() throws RemoteException {
+        this.images = new HashMap<>();
+        this.calculatedSquares = new ArrayList<>();
+        this.scene = serviceClient.getScene();
+        this.squareSize = serviceClient.getSquareSize();
+        this.width = serviceClient.getLargeurDessin(); this.height = serviceClient.getHauteurDessin();
+        calculating = true;
+
+        for (ServiceRaytracing serviceRaytracing:
+                serviceCalculs) {
+            serviceRaytracing.start();
+        }
+    }
+
     private int[] getNewSquare(){
         if(!calculating) return null;
         int x, y = 0;
@@ -54,7 +68,7 @@ public class Central implements ServiceDistributeur {
     }
 
     public void enregistrerClient(ServiceClient c) throws RemoteException {
-        this.servicesClient = c;
+        this.serviceClient = c;
     }
 
     @Override
@@ -72,7 +86,7 @@ public class Central implements ServiceDistributeur {
             try {
                 Image image = c.calculerImage(scene, x0, y0, Math.min(squareSize, width - x0), Math.min(squareSize, width - y0));
                 images.put(image, xy);
-                servicesClient.afficherImage(image, xy[0], xy[1]);
+                serviceClient.afficherImage(image, xy[0], xy[1]);
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }

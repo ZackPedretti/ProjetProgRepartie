@@ -9,4 +9,5 @@ public interface ServiceDistributeur extends Remote{
     void enregistrerServiceCalcul(ServiceRaytracing c) throws RemoteException;
     boolean executerRaytracing(ServiceRaytracing c) throws RemoteException;
     public void calculateImage(Scene scene, int squareSize, int width, int height) throws RemoteException;
+    public void calculateImage() throws RemoteException;
 }

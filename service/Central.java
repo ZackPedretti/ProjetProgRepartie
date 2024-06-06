@@ -17,21 +17,8 @@ public class Central implements ServiceDistributeur {
     boolean calculating;
 
     public Central() {
+        this.serviceCalculs = new ArrayList<>();
         calculating = false;
-    }
-
-    public void calculateImage(Scene scene, int squareSize, int width, int height) throws RemoteException {
-        this.images = new HashMap<>();
-        this.calculatedSquares = new ArrayList<>();
-        this.scene = scene;
-        this.squareSize = squareSize;
-        this.width = width; this.height = height;
-        calculating = true;
-
-        for (ServiceRaytracing serviceRaytracing:
-             serviceCalculs) {
-            serviceRaytracing.start();
-        }
     }
 
     public void calculateImage() throws RemoteException {
@@ -48,7 +35,7 @@ public class Central implements ServiceDistributeur {
         }
     }
 
-    private int[] getNewSquare(){
+    private int[] getNewSquare() {
         if(!calculating) return null;
         int x, y = 0;
         while(y < height){
@@ -71,7 +58,6 @@ public class Central implements ServiceDistributeur {
         this.serviceClient = c;
     }
 
-    @Override
     public void enregistrerServiceCalcul(ServiceRaytracing c) throws RemoteException {
         this.serviceCalculs.add(c);
     }
@@ -82,13 +68,15 @@ public class Central implements ServiceDistributeur {
         if(xy == null) return false;
         int x0 = xy[0];
         int y0 = xy[1];
-        Thread thread = new Thread(() -> {
-            try {
-                Image image = c.calculerImage(scene, x0, y0, Math.min(squareSize, width - x0), Math.min(squareSize, width - y0));
-                images.put(image, xy);
-                serviceClient.afficherImage(image, xy[0], xy[1]);
-            } catch (RemoteException e) {
-                throw new RuntimeException(e);
+        Thread thread = new Thread()  {
+            public void run() {
+                try {
+                    Image image = c.calculerImage(scene, x0, y0, Math.min(squareSize, width - x0), Math.min(squareSize, width - y0));
+                    images.put(image, xy);
+                    serviceClient.afficherImage(image, xy[0], xy[1]);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }) ;
         thread.start();

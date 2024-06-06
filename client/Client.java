@@ -2,6 +2,8 @@ import raytracer.Disp;
 import raytracer.Image;
 import raytracer.Scene;
 
+import java.rmi.RemoteException;
+
 public class Client implements ServiceClient{
     String nomFichierDessin;
     int largeurDessin;
@@ -21,23 +23,23 @@ public class Client implements ServiceClient{
         this.squareSize = squareSize;
     }
     @Override
-    public void afficherImage(Image image, int x, int y) {
+    public void afficherImage(Image image, int x, int y)  {
         this.disp.setImage(image, x, y);
     }
 
-    public Scene getScene() {
+    public Scene getScene() throws RemoteException {
         return scene;
     }
 
-    public int getLargeurDessin() {
+    public int getLargeurDessin() throws RemoteException{
         return largeurDessin;
     }
 
-    public int getHauteurDessin() {
+    public int getHauteurDessin() throws RemoteException{
         return hauteurDessin;
     }
 
-    public int getSquareSize(){
+    public int getSquareSize()throws RemoteException{
         return squareSize;
     }
 }

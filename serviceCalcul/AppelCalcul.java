@@ -9,9 +9,9 @@ public class AppelCalcul {
             ServiceDistributeur serviceDistributeur = (ServiceDistributeur) reg.lookup("rayTracing");
 
             Raytracing rayTracing = new Raytracing(serviceDistributeur);
-            ServiceRaytracing client = (ServiceRaytracing) UnicastRemoteObject.exportObject(rayTracing, 0);
+            ServiceRaytracing serviceCalcul = (ServiceRaytracing) UnicastRemoteObject.exportObject(rayTracing, 0);
 
-            serviceDistributeur.enregistrerServiceCalcul(client);
+            serviceDistributeur.enregistrerServiceCalcul(serviceCalcul);
         }
         catch (Exception e) {
             e.printStackTrace();

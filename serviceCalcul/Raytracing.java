@@ -9,6 +9,7 @@ import java.time.Instant;
 public class Raytracing implements ServiceRaytracing {
 
     private ServiceDistributeur distributeur;
+
     public Raytracing(ServiceDistributeur distributeur) throws RemoteException {
         this.distributeur = distributeur;
     }

@@ -3,7 +3,9 @@ import raytracer.Scene;
 
 import java.io.Serializable;
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-public interface ServiceRaytracing extends Remote, Serializable{
-    public Image calculerImage(Scene scene, int x0, int y0, int width, int height);
+public interface ServiceRaytracing extends Remote{
+    public Image calculerImage(Scene scene, int x0, int y0, int width, int height) throws RemoteException;
+    public void start() throws RemoteException;
 }

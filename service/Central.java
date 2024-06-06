@@ -29,7 +29,11 @@ public class Central implements ServiceDistributeur {
         while(y < height){
             x = 0;
             while(x < width){
-                if(!calculatedSquares.contains(new int[]{x, y})) return new int[]{x, y};
+                boolean isCalculated = false;
+                for (int[] calculatedSquare : calculatedSquares) {
+                    isCalculated = isCalculated || (x == calculatedSquare[0] && y == calculatedSquare[1]);
+                }
+                if(!isCalculated) return new int[]{x, y};
                 x += squareSize;
             }
             y += squareSize;
@@ -39,9 +43,10 @@ public class Central implements ServiceDistributeur {
 
     public void enregistrerClient(ServiceRaytracing c) throws RemoteException {
         this.servicesClient.add(c);
+        c.start();
     }
 
-    public boolean executerRaytracing(ServiceRaytracing c){
+    public boolean executerRaytracing(ServiceRaytracing c) throws RemoteException {
         int[] xy = getNewSquare();
         if(xy == null) return false;
         int x0 = xy[0];

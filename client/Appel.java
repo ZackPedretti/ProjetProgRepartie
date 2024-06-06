@@ -9,8 +9,8 @@ class Appel {
 	    Registry reg = LocateRegistry.getRegistry("localhost");
 	    ServiceDistributeur serviceDistributeur = (ServiceDistributeur) reg.lookup("rayTracing");
 
-	    Raytracing tableauBlanc = new Raytracing(serviceDistributeur);
-	    ServiceRaytracing client = (ServiceRaytracing) UnicastRemoteObject.exportObject(tableauBlanc, 0);
+	    Raytracing rayTracing = new Raytracing(serviceDistributeur);
+	    ServiceRaytracing client = (ServiceRaytracing) UnicastRemoteObject.exportObject(rayTracing, 0);
 	    
 	    serviceDistributeur.enregistrerClient(client);
 	    }

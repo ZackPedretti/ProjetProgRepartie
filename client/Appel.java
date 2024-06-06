@@ -10,6 +10,7 @@ public class Appel {
         Registry reg = LocateRegistry.getRegistry("localhost");
         ServiceDistributeur serviceDistributeur = (ServiceDistributeur) reg.lookup("rayTracing");
 
+
         Client client = new Client(serviceDistributeur, "simple.txt", 512, 512, 64);
         ServiceClient serviceClient = (ServiceClient) UnicastRemoteObject.exportObject(client, 0);
 

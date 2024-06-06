@@ -8,7 +8,7 @@ public class AppelCalcul {
             Registry reg = LocateRegistry.getRegistry("localhost");
             ServiceDistributeur serviceDistributeur = (ServiceDistributeur) reg.lookup("rayTracing");
 
-            Raytracing rayTracing = new Raytracing(serviceDistributeur);
+            Raytracing rayTracing = new Raytracing();
             ServiceRaytracing serviceCalcul = (ServiceRaytracing) UnicastRemoteObject.exportObject(rayTracing, 0);
 
             serviceDistributeur.enregistrerServiceCalcul(serviceCalcul);

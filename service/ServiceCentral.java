@@ -11,6 +11,7 @@ public class ServiceCentral {
 
     public static void main(String[] args) throws RemoteException {
 
+        /*
         String fichier_description = "simple.txt";
 
         int largeur = 512, hauteur = 512;
@@ -34,7 +35,9 @@ public class ServiceCentral {
 
         //</editor-fold>
 
-        Central central = new Central(new Scene(fichier_description, largeur, hauteur), squareSize, largeur, hauteur);
+         */
+
+        Central central = new Central();
 
         ServiceDistributeur serviceCentral = (ServiceDistributeur) UnicastRemoteObject.exportObject(central, 0);
 

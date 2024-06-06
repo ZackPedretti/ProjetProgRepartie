@@ -15,8 +15,6 @@ public class Raytracing implements ServiceRaytracing {
 
     public void start() throws RemoteException {
         while(distributeur.executerRaytracing(this));
-
-        Disp disp = distributeur.getFinal();
     }
 
     @Override
